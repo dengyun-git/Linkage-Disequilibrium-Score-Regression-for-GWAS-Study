@@ -2,12 +2,14 @@
 
 #!/bin/bash
 echo "start  at "$(date)""
-### find how many rows in original OA gwas file. run outside of this script
-#cat KP.Format.GO.FILTER.GW.AllOA.FULL.09052019.txt | wc -l
+
 ### remove header
 #sed '1d' KP.Format.GO.FILTER.GW.AllOA.FULL.09052019.txt > temp.txt
 
-for k in {1..26500}
+### find how many rows in original OA gwas file. run outside of this script
+rowN=$(cat temp.txt | wc -l)
+
+for ((k=1; k<=(($rowN/1000)); k++))
 do
 ### lines < 10,0000 1s/per snp; <100,0000 5s/per snp. Seperate files into small blocks to speed up, here we choose 1000 lines as a block. 
 sed -n $((1000*(k-1)+1)),$((1000*k))p temp.txt > OApre.txt 
