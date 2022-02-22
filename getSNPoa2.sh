@@ -8,13 +8,13 @@ echo "start  at "$(date)""
 ### remove header
 #sed '1d' KP.Format.GO.FILTER.GW.AllOA.FULL.09052019.txt > temp.txt
 
-for k in {1..2}
+for k in {1..26500}
 do
   ### lines < 10,0000 1s/per snp; <100,0000 5s/per snp. Seperate files into small blocks to speed up, here we choose 1000 lines as a block. 
-  sed -n $((2*(k-1)+1)),$((2*k))p temp.txt > OApre2.txt 
+  sed -n $((1000*(k-1)+1)),$((1000*k))p temp.txt > OApre2.txt 
 
   ### extract Chromosome number and base position for each entry 
-  for row in {1..2}
+  for row in {1..1000}
   do
   thisCHR=$(awk -v thisRow=$row '{if(NR==thisRow) print $8}' OApre2.txt)
   thisPOS=$(awk -v thisRow=$row '{if(NR==thisRow) print $9}' OApre2.txt)
