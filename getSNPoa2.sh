@@ -8,6 +8,7 @@ echo "start  at "$(date)""
 ### remove header
 #sed '1d' KP.Format.GO.FILTER.GW.AllOA.FULL.09052019.txt > temp.txt
 
+### change the two for loop number to fit the user quiry.
 for k in {1..26500}
 do
   ### lines < 10,0000 1s/per snp; <100,0000 5s/per snp. Seperate files into small blocks to speed up, here we choose 1000 lines as a block. 
