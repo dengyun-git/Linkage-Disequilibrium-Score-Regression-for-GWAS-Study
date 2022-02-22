@@ -35,7 +35,7 @@ echo "row $row finished"
 done
 
 ### write the output refSNP into seprate lines and add "s" symbol 
-echo $snpOA | tr " " "\n" | sed 's/^/s/' > snpOANow.txt
+echo $snpOA | tr " " "\n" | sed 's/^/rs/' > snpOANow.txt
 
 ### append the refSNP column to original GWAS file. The final file OAGWAS.txt will be input for ldsc analysis.
 paste -d'\t' snpOANow.txt OApre.txt > OAGWAS1.txt
@@ -51,3 +51,6 @@ done
 
 ### add colnames 
 echo -e "SNP\tA1\tA2\tREF\tBeta\tP\tN\tCHR\tPOS" | cat -  OAGWAS2.txt > OAGWAS3.txt
+
+### further check search results, delete records with failure search
+awk '{if(NF!=9) print $0}' OAGWAS3.txt > OAGWAS4.txt
