@@ -1,5 +1,5 @@
 ### use EDirect NCBI service to replace SNPID to SNP name for OAgwas file.
-### this script only output snpOA.txt. Compare to getSNPoa.sh, the advantage is quicker, disadvantage is not easy to check errors.
+### this script only output snpOA.txt. which is quicker to obtain mapped refSNP id.
 
 #!/bin/bash
 echo "start  at "$(date)""
@@ -8,13 +8,13 @@ echo "start  at "$(date)""
 ### remove header
 #sed '1d' KP.Format.GO.FILTER.GW.AllOA.FULL.09052019.txt > temp.txt
 
-for k in {1..26500}
+for k in {1..2}
 do
   ### lines < 10,0000 1s/per snp; <100,0000 5s/per snp. Seperate files into small blocks to speed up, here we choose 1000 lines as a block. 
-  sed -n $((1000*(k-1)+1)),$((1000*3))p temp.txt > OApre2.txt 
+  sed -n $((2*(k-1)+1)),$((2*k))p temp.txt > OApre2.txt 
 
   ### extract Chromosome number and base position for each entry 
-  for row in {1..1000}
+  for row in {1..2}
   do
   thisCHR=$(awk -v thisRow=$row '{if(NR==thisRow) print $8}' OApre2.txt)
   thisPOS=$(awk -v thisRow=$row '{if(NR==thisRow) print $9}' OApre2.txt)
@@ -30,21 +30,22 @@ do
   fi
 
   ### concatenate retrieved refSNP for each row
-  snpOA+="${NewsnpOA} " 
+  snpOA+="$row:${NewsnpOA} "  ### row number here is only used for error checking.
 
   echo "row $row finished"
   done
 
-### write the output refSNP into seprate lines and add "s" symbol 
-echo $snpOA | tr " " "," >> snpOA.txt	
+### write the output refSNP into file 
+echo $snpOA | tr " " "," >> snpOA.txt
 
 unset snpOA  ### snpOA variable should be limited to each small block
 
 echo "$k round end"
 done
 
+### write the output refSNP into seprate lines and add "s" symbol
 ### append the refSNP column to original GWAS file. The final file OAGWAS.txt will be input for ldsc analysis.
-cat snpOA.txt | sed -e 's/\,/\n/g' | sed 's/^/s/' > snpOAall.txt 
+cat snpOA.txt | tr " " ","  | sed -e 's/\,/\n/g' | sed 's/^.*:/s/' > snpOAall.txt 
 paste -d'\t' snpOAall.txt temp.txt > OAGWAS1.txt
    
 ### original header SNPID	EffectAllele	AlternateAllele	EffectAlleleFrequency	EffectSize.Beta	Pvalue	SampleSize	Chromosome	Position	EffectSize.OR
