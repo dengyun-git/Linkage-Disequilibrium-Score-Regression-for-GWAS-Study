@@ -56,3 +56,6 @@ awk '{print $1,$3,$4,$5,$6,$7,$8,$9,$10}' OAGWAS1.txt >> OAGWAS2.txt
  
 ### add colnames 
 echo -e "SNP\tA1\tA2\tREF\tBeta\tP\tN\tCHR\tPOS" | cat -  OAGWAS2.txt > OAGWAS3.txt
+
+### further check search results, delete records with failure search
+awk '{if(NF!=9) print $0}' OAGWAS3.txt > OAGWAS4.txt
