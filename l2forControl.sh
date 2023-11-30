@@ -4,7 +4,7 @@
 #conda env create --file environment.yml
 #curl https://bootstrap.pypa.io/get-pip.py | python3 
 #pip install pandas
-#cd /Users/ydeng/Documents/QCstepOA/DA_STEpUP_202111/MetaIn1.1/tempOut4In/ldsc
+#cd /Users/ydeng/Documents/MetaIn1.1/tempOut4In/ldsc
 #source activate ldsc
 # pay attention, the arguments for files which not direct in the ldsc folder must include the full path otherwise error.
 
@@ -18,21 +18,21 @@ for chrN in {1..22}
 do
 ### generate annotation files for control proteins: Controlensemble.*.annot.gz annoys file.
 python make_annot.py \
---gene-set-file  /Users/ydeng/Documents/QCstepOA/DA_STEpUP_202111/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup"$diseaseGroup"/"$filterType"/Control.GeneSet \
---gene-coord-file /Users/ydeng/Documents/QCstepOA/DA_STEpUP_202111/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup"$diseaseGroup"/"$filterType"/Control.Location.txt \
+--gene-set-file  /Users/ydeng/Documents/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup"$diseaseGroup"/"$filterType"/Control.GeneSet \
+--gene-coord-file /Users/ydeng/Documents/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup"$diseaseGroup"/"$filterType"/Control.Location.txt \
 --windowsize 100000 \
 --bimfile 1000G.EUR.QC.$chrN.bim \
---annot-file /Users/ydeng/Documents/QCstepOA/DA_STEpUP_202111/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup"$diseaseGroup"/"$filterType"/Control."$chrN".annot.gz
+--annot-file /Users/ydeng/Documents/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup"$diseaseGroup"/"$filterType"/Control."$chrN".annot.gz
     
 
 ### Compute partitioned LD scores with an  Controlensemble.*.annot.gz annote file. 	
 python ldsc.py \
---out /Users/ydeng/Documents/QCstepOA/DA_STEpUP_202111/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup"$diseaseGroup"/"$filterType"/Control."$chrN" \
+--out /Users/ydeng/Documents/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup"$diseaseGroup"/"$filterType"/Control."$chrN" \
 --bfile 1000G.EUR.QC.$chrN \
 --l2 \
 --ld-wind-cm 1 \
 --print-snps hm.$chrN.snp \
---annot /Users/ydeng/Documents/QCstepOA/DA_STEpUP_202111/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup"$diseaseGroup"/"$filterType"/Control."$chrN".annot.gz \
+--annot /Users/ydeng/Documents/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup"$diseaseGroup"/"$filterType"/Control."$chrN".annot.gz \
 --thin-annot
 
 echo "chromosome $chrN finished"
