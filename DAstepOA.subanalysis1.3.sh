@@ -5,7 +5,7 @@
 Rscript /Users/ydeng/Documents/PrimaryAnalysis/subanalysis1.3.R
 
 ### at the same time run bash to retreive refSNP ID for all the snp locations in GWAS file 
-#bash /Users/ydeng/Documents/QCstepOA/DA_STEpUP_202111/MetaIn1.1/tempOut4In/ldsc/getSNPoa.sh 
+#bash /Users/ydeng/Documents/MetaIn1.1/tempOut4In/ldsc/getSNPoa.sh 
 #wait
 
 
