@@ -20,11 +20,11 @@ do
 mkdir /Users/ydeng/Documents/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup"$diseaseGroup"/"$filterType"/endoEnrich_ldscores
 
 ### move required files to endoEnrich_ldscores
-mv /Users/ydeng/Documents/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup"$diseaseGroup"/"$filterType"/*.annot.gz /Users/ydeng/Documents/QCstepOA/DA_STEpUP_202111/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup"$diseaseGroup"/"$filterType"/endoEnrich_ldscores/
+mv /Users/ydeng/Documents/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup"$diseaseGroup"/"$filterType"/*.annot.gz /Users/ydeng/Documents/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup"$diseaseGroup"/"$filterType"/endoEnrich_ldscores/
 
-mv /Users/ydeng/Documents/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup$diseaseGroup/$filterType/*l2* /Users/ydeng/Documents/QCstepOA/DA_STEpUP_202111/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup$diseaseGroup/$filterType/endoEnrich_ldscores/
+mv /Users/ydeng/Documents/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup$diseaseGroup/$filterType/*l2* /Users/ydeng/Documents/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup$diseaseGroup/$filterType/endoEnrich_ldscores/
 
-cp /Users/ydeng/Documents/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup$diseaseGroup/$filterType/Control.GeneSet /Users/ydeng/Documents/QCstepOA/DA_STEpUP_202111/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup$diseaseGroup/$filterType/endoEnrich_ldscores/
+cp /Users/ydeng/Documents/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup$diseaseGroup/$filterType/Control.GeneSet /Users/ydeng/Documents/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup$diseaseGroup/$filterType/endoEnrich_ldscores/
 
 ### cts mode
 ### OAendo.ldcts is automatically generated from R. 
