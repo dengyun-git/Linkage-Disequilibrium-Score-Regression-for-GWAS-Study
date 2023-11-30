@@ -1,2 +1,4 @@
-# mapChrPos2RefSNP
-In GWAS study, linkage disequilibrium score regression, it is required to map given SNP chromosome position to gene names. This repository used EDirect API of NCBI website to map refSNP id to gene names.
+# Linkage disequilibrium score regression for GWAS study
+This repository encompasses 
+1. self-written pipeline to map given SNP chromosome position to gene names by EDirect API of NCBI website.
+2. LDSC regression adopting ldsc python package. 
