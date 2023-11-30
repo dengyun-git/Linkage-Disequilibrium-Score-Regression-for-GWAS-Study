@@ -17,22 +17,22 @@ do
 for filterType in "${filterTypeList[@]}"
 do 
 ### create a folder endoEnrich_ldscores_i for cts model heritability enrichment test
-mkdir /Users/ydeng/Documents/QCstepOA/DA_STEpUP_202111/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup"$diseaseGroup"/"$filterType"/endoEnrich_ldscores
+mkdir /Users/ydeng/Documents/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup"$diseaseGroup"/"$filterType"/endoEnrich_ldscores
 
 ### move required files to endoEnrich_ldscores
-mv /Users/ydeng/Documents/QCstepOA/DA_STEpUP_202111/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup"$diseaseGroup"/"$filterType"/*.annot.gz /Users/ydeng/Documents/QCstepOA/DA_STEpUP_202111/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup"$diseaseGroup"/"$filterType"/endoEnrich_ldscores/
+mv /Users/ydeng/Documents/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup"$diseaseGroup"/"$filterType"/*.annot.gz /Users/ydeng/Documents/QCstepOA/DA_STEpUP_202111/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup"$diseaseGroup"/"$filterType"/endoEnrich_ldscores/
 
-mv /Users/ydeng/Documents/QCstepOA/DA_STEpUP_202111/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup$diseaseGroup/$filterType/*l2* /Users/ydeng/Documents/QCstepOA/DA_STEpUP_202111/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup$diseaseGroup/$filterType/endoEnrich_ldscores/
+mv /Users/ydeng/Documents/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup$diseaseGroup/$filterType/*l2* /Users/ydeng/Documents/QCstepOA/DA_STEpUP_202111/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup$diseaseGroup/$filterType/endoEnrich_ldscores/
 
-cp /Users/ydeng/Documents/QCstepOA/DA_STEpUP_202111/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup$diseaseGroup/$filterType/Control.GeneSet /Users/ydeng/Documents/QCstepOA/DA_STEpUP_202111/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup$diseaseGroup/$filterType/endoEnrich_ldscores/
+cp /Users/ydeng/Documents/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup$diseaseGroup/$filterType/Control.GeneSet /Users/ydeng/Documents/QCstepOA/DA_STEpUP_202111/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup$diseaseGroup/$filterType/endoEnrich_ldscores/
 
 ### cts mode
 ### OAendo.ldcts is automatically generated from R. 
 python ldsc.py \
 --h2-cts OA.sumstats \
 --ref-ld-chr 1000G_EUR_Phase3_baseline/baseline. \
---out /Users/ydeng/Documents/QCstepOA/DA_STEpUP_202111/MetaOut1.3/DiseaseGroup"$diseaseGroup"/"$filterType"/DiseaseGroup"$diseaseGroup"."$filterType".EndoEnrich \
---ref-ld-chr-cts /Users/ydeng/Documents/QCstepOA/DA_STEpUP_202111/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup"$diseaseGroup"/"$filterType"/OAendo.ldcts \
+--out /Users/ydeng/Documents/MetaOut1.3/DiseaseGroup"$diseaseGroup"/"$filterType"/DiseaseGroup"$diseaseGroup"."$filterType".EndoEnrich \
+--ref-ld-chr-cts /Users/ydeng/Documents/MetaIn1.1/tempOut4In/ldsc/DiseaseGroup"$diseaseGroup"/"$filterType"/OAendo.ldcts \
 --w-ld-chr weights_hm3_no_hla/weights.
 
 echo "$filterType finished"
