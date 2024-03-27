@@ -1,4 +1,3 @@
-# Project: STEp-UP OA
 # Subanalysis 1.3 Bioinformatic characterization for proteins signatures distinguishing clusters
 # Date: 16 MAR 2022
 # Version: 0.7
@@ -33,18 +32,18 @@ options(stringsAsFactors = FALSE)
 library(colorspace)
 
 ### set file path
-myPathIn1  <- "/Users/ydeng/Documents/QCstepOA/DA_STEpUP_202111/MetaIn1.1/STEPUP_DAG_rel001_draft1/"  ### location of downloaded meta data from OneDrive
-myPathIn2 <- "/Users/ydeng/Documents/QCstepOA/DA_STEpUP_202111/MetaIn1.1/DatabaseResource/"         ### location of downloaded enrichment resources from online databases
-myPathIn3  <- "/Users/ydeng/Documents/QCstepOA/DA_STEpUP_202111/MetaOut1.2/normalised_combat/"  
-myPathIn4  <- "/Users/ydeng/Documents/QCstepOA/DA_STEpUP_202111/MetaOut1.1/normalised_combat/"       ### location of files required as input in this script
-myPathIn5 <- "/Users/ydeng/Documents/QCstepOA/DA_STEpUP_202111/MetaIn1.1/tempOut4In/"   
+myPathIn1  <- "/Users/ydeng/Documents//DA__202111/MetaIn1.1/_DAG_rel001_draft1/"  ### location of downloaded meta data from OneDrive
+myPathIn2 <- "/Users/ydeng/Documents//DA__202111/MetaIn1.1/DatabaseResource/"         ### location of downloaded enrichment resources from online databases
+myPathIn3  <- "/Users/ydeng/Documents//DA__202111/MetaOut1.2/normalised_combat/"  
+myPathIn4  <- "/Users/ydeng/Documents//DA__202111/MetaOut1.1/normalised_combat/"       ### location of files required as input in this script
+myPathIn5 <- "/Users/ydeng/Documents//DA__202111/MetaIn1.1/tempOut4In/"   
 ### location of files required as input in this script
-myCodeIn  <- "/Users/ydeng/Documents/QCstepOA/DA_STEpUP_202111/DAcode2021.11/"                       ### location of downloaded R scripts from Github
+myCodeIn  <- "/Users/ydeng/Documents//DA__202111/DAcode2021.11/"                       ### location of downloaded R scripts from Github
 
 source(paste0(myCodeIn,"PrimaryAnalysis/call1.1.R")) 
 source(paste0(myCodeIn,"PrimaryAnalysis/call1.3.R")) 
 
-myPathOut <- "/Users/ydeng/Documents/QCstepOA/DA_STEpUP_202111/MetaOut1.3/"
+myPathOut <- "/Users/ydeng/Documents//MetaOut1.3/"
 
 ### create a log file to record the "code version + running date + input files + output files"
 log1.3  = file(paste0(myPathOut,"1.3.log"),"append")
@@ -249,11 +248,11 @@ scRNAgeneCellSets2 = replaceGenes(scRNAgeneCellSets,proComplexRef,"EntrezGeneSym
 # ### bash:extract the chromosome position information from gwas file
 # cat KP.Format.GO.FILTER.GW.AllOA.FULL.09052019.txt | cut -f 1 | sed -e '1d' > GWASposition.txt
 # ### R: match the snp based on position in gwas file
-# snpMap <- fread("/Users/ydeng/Documents/QCstepOA/DA_STEpUP_202111/MetaIn1.1/tempOut4In/ldsc/snpMap.txt",head=FALSE)
-# GWASposition <- fread("/Users/ydeng/Documents/QCstepOA/DA_STEpUP_202111/MetaIn1.1/tempOut4In/ldsc/GWASposition.txt",head=FALSE)
+# snpMap <- fread("/Users/ydeng/Documents//DA__202111/MetaIn1.1/tempOut4In/ldsc/snpMap.txt",head=FALSE)
+# GWASposition <- fread("/Users/ydeng/Documents//DA__202111/MetaIn1.1/tempOut4In/ldsc/GWASposition.txt",head=FALSE)
 # SNP <- unlist(sapply(GWASposition,function(x){snpMap[which(snpMap[,1] %in% x),2]}))
 # colnames(SNP)="SNP"
-# fwrite(SNP,"/Users/ydeng/Documents/QCstepOA/DA_STEpUP_202111/MetaIn1.1/tempOut4In/ldsc/SNP.txt",sep="\n",col.names=TRUE)
+# fwrite(SNP,"/Users/ydeng/Documents//DA__202111/MetaIn1.1/tempOut4In/ldsc/SNP.txt",sep="\n",col.names=TRUE)
 # ### bash: combine the mapped refSNP id to "KP.Format.GO.FILTER.GW.AllOA.FULL.09052019.txt"
 # cut -f2- KP.Format.GO.FILTER.GW.AllOA.FULL.09052019.txt > temptext.txt 
 # paste SNP.txt temptext.txt > OAGWAS.txt
@@ -638,4 +637,4 @@ close(log1.3)
 
 ### reset output to log file back to console window for future usage.
 closeAllConnections()
-#in bash: add this: Rscript /Users/ydeng/Documents/QCstepOA/DA_STEpUP_202111/DAcode2021.11/PrimaryAnalysis/subanalysis1.3.R 2> RWarning.txt
+#in bash: add this: Rscript /Users/ydeng/Documents//DA__202111/DAcode2021.11/PrimaryAnalysis/subanalysis1.3.R 2> RWarning.txt
