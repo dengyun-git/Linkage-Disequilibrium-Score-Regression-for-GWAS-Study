@@ -5,8 +5,8 @@
 Rscript /Users/ydeng/Documents/DAcode2021.11/PrimaryAnalysis/subanalysis1.3.R
 
 ### at the same time run bash to retreive refSNP ID for all the snp locations in GWAS file 
-#bash /Users/ydeng/Documents/MetaIn1.1/tempOut4In/ldsc/getSNPoa.sh 
-#wait
+bash /Users/ydeng/Documents/MetaIn1.1/tempOut4In/ldsc/getSNPoa.sh 
+wait
 
 
 ### when all the previous scripts run successfully, continuelly run the following two scripts concurrently.
